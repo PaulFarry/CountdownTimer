@@ -24,7 +24,17 @@ namespace CountDownTimer
         private void TmrCountdown_Tick(object sender, EventArgs e)
         {
             var difference = endTime - DateTime.Now;
-            label1.Text = $"{difference.Days:00}d{difference.Hours:00}:{difference.Minutes:00}:{difference.Seconds:00}";
+            string formattedText;
+
+            if (difference.Days > 0)
+            {
+                formattedText = $"{difference.Days:00}d{difference.Hours:00}:{difference.Minutes:00}:{difference.Seconds:00}";
+            }
+            else
+            {
+                formattedText = $"{difference.Hours:00}:{difference.Minutes:00}:{difference.Seconds:00}";
+            }
+            label1.Text = formattedText;
         }
 
         private void Form1_Shown(object sender, EventArgs e)
